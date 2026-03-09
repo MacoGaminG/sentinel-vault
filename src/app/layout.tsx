@@ -1,12 +1,10 @@
+import { ButtonSignIn } from "@/components/button-sign-in";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
-import { ButtonSignIn } from "@/components/button-sign-in";
-import { signIn } from "@/lib/authentication/auth-client";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

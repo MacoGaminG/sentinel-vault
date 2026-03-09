@@ -1,4 +1,6 @@
+import { FeaturesGrid } from "@/components/features-grid";
 import { Button } from "@/components/ui/button";
+import { Lock } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -6,13 +8,13 @@ export default function Home() {
     <main className="flex flex-col min-h-screen text-center items-center py-20 px-4 ">
       <section className="flex flex-col max-w-3xl">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-linear-to-b from-white to-zinc-500 bg-clip-text text-transparent">
-          Sécurité maximale.
+          Maximum security.
           <br />
-          Simplicité totale.
+          Total simplicity.
         </h1>
         <p className="text-zinc-400 text-lg mb-12">
-          Un coffre-fort numérique moderne conçu avec **Next.js**, **Bun** et un
-          chiffrement **AES-256** de bout en bout.
+          A modern digital safe designed with **Next.js**, **Bun**, and
+          end-to-end **AES-256** encryption.
         </p>
         <div className="flex gap-4 justify-center">
           <Button size="lg" variant="default" asChild>
@@ -23,7 +25,18 @@ export default function Home() {
           </Button>
         </div>
       </section>
-      <section></section>
+      <section>
+        <FeaturesGrid
+          features={[
+            {
+              icon: <Lock className="w-12 h-12" />,
+              title: "AES-256 encryption",
+              description:
+                "Your notes are encrypted from end to end before reaching the SQLite database.",
+            },
+          ]}
+        />
+      </section>
     </main>
   );
 }
