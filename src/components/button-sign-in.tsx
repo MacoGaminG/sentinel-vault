@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 export const ButtonSignIn = () => {
   return (
-    <Button variant="default" onClick={signIn}>
+    <Button className="cursor-pointer" variant="default" onClick={signIn}>
       Sign In
     </Button>
   );
