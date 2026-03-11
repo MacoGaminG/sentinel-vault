@@ -1,13 +1,13 @@
 import { FeaturesGrid } from "@/components/features-grid";
 import { Button } from "@/components/ui/button";
-import { Lock } from "lucide-react";
+import { Lock, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen text-center items-center py-20 px-4 ">
+    <div className="flex flex-col min-h-screen text-center items-center py-20 px-4 ">
       <section className="flex flex-col max-w-3xl">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-linear-to-b from-white to-zinc-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-linear-to-b from-zinc-900 to-zinc-500 dark:from-white dark:to-zinc-500 bg-clip-text text-transparent">
           Maximum security.
           <br />
           Total simplicity.
@@ -25,7 +25,7 @@ export default function Home() {
           </Button>
         </div>
       </section>
-      <section>
+      <section className="flex flex-col w-full">
         <FeaturesGrid
           features={[
             {
@@ -34,9 +34,21 @@ export default function Home() {
               description:
                 "Your notes are encrypted from end to end before reaching the SQLite database.",
             },
+            {
+              icon: <ShieldCheck className="w-12 h-12" />,
+              title: "Argon2id",
+              description:
+                "Strong authentication using the latest secure hash standards.",
+            },
+            {
+              icon: <Zap className="w-12 h-12" />,
+              title: "Bun Runtime",
+              description:
+                "Ultra-fast performance optimized for modern applications.",
+            },
           ]}
         />
       </section>
-    </main>
+    </div>
   );
 }

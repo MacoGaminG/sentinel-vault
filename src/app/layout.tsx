@@ -48,7 +48,13 @@ export default function RootLayout({
                 <ThemeToggle />
               </div>
             </header>
-            {children}
+            <main>{children}</main>
+            <footer className="py-10 text-center text-zinc-600 border-t border-zinc-900">
+              <p className="text-sm">
+                © 2026 Sentinel Vault — Projet technique de Sukuna. Tout droit
+                réservé.
+              </p>
+            </footer>
           </div>
         </ThemeProvider>
       </body>
