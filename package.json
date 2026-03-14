@@ -7,7 +7,7 @@
     "build": "bun --bun next build",
     "start": "bun --bun next start -p 3003",
     "lint": "eslint",
-    "initDB": "bunx drizzle-kit generate --dialect sqlite --schema ./src/lib/schemas/auth-schema.ts && bun run src/lib/scripts/migrate.ts"
+    "initDB": "bunx drizzle-kit push"
   },
   "dependencies": {
     "better-auth": "^1.5.5",
