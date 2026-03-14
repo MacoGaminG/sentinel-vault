@@ -6,6 +6,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,24 +41,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen bg-zinc-50 font-sans dark:bg-zinc-950">
-            <header className="flex px-6 py-4 bg-white border-b border-zinc-100 dark:bg-black dark:border-zinc-900 items-center">
-              <div className="flex gap-2 text-xl font-bold dark:text-white">
-                <ShieldCheck width={24} height={24} />
-                <span>Sentinel Vault</span>
-              </div>
-              <div className="flex ml-auto gap-2">
-                <ButtonSignIn />
-                <ThemeToggle />
-              </div>
-            </header>
+            <Navbar />
             <Toaster position="bottom-center" closeButton richColors />
-            <main>{children}</main>
-            <footer className="py-10 text-center text-zinc-600 border-t border-zinc-900">
-              <p className="text-sm">
-                © 2026 Sentinel Vault — Projet technique de Sukuna. Tout droit
-                réservé.
-              </p>
-            </footer>
+            <main className="flex-1 flex items-center">{children}</main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen text-center items-center py-20 px-4 ">
+    <div className="flex flex-col text-center items-center py-20 px-4">
       <section className="flex flex-col max-w-3xl">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-linear-to-b from-zinc-900 to-zinc-500 dark:from-white dark:to-zinc-500 bg-clip-text text-transparent">
           Maximum security.
@@ -21,11 +21,17 @@ export default function Home() {
             <Link href="">Start</Link>
           </Button>
           <Button variant="outline" size="lg" asChild>
-            <Link href="">See on Github</Link>
+            <Link
+              href="https://github.com/MacoGaminG/sentinel-vault"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See on Github
+            </Link>
           </Button>
         </div>
       </section>
-      <section className="flex flex-col w-full">
+      <section className="flex flex-col w-full mt-12">
         <FeaturesGrid
           features={[
             {
