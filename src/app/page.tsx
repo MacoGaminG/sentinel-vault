@@ -1,3 +1,4 @@
+import { ButtonSignIn } from "@/components/button-sign-in";
 import { FeaturesGrid } from "@/components/features-grid";
 import { Button } from "@/components/ui/button";
 import { Lock, ShieldCheck, Zap } from "lucide-react";
@@ -17,9 +18,7 @@ export default function Home() {
           end-to-end **AES-256** encryption.
         </p>
         <div className="flex gap-4 justify-center">
-          <Button size="lg" variant="default" asChild>
-            <Link href="">Start</Link>
-          </Button>
+          <ButtonSignIn label="Start" size="lg" variant="default" />
           <Button variant="outline" size="lg" asChild>
             <Link
               href="https://github.com/MacoGaminG/sentinel-vault"
