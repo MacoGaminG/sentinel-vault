@@ -1,8 +1,8 @@
 import { ButtonSignIn } from "@/components/button-sign-in";
 import { FeaturesGrid } from "@/components/features-grid";
 import { Button } from "@/components/ui/button";
-import { Lock, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
+import { LuLock, LuShieldCheck, LuZap } from "react-icons/lu";
 
 export default function Home() {
   return (
@@ -34,19 +34,19 @@ export default function Home() {
         <FeaturesGrid
           features={[
             {
-              icon: <Lock className="w-12 h-12" />,
+              icon: <LuLock className="w-12 h-12" />,
               title: "AES-256 encryption",
               description:
                 "Your notes are encrypted from end to end before reaching the SQLite database.",
             },
             {
-              icon: <ShieldCheck className="w-12 h-12" />,
+              icon: <LuShieldCheck className="w-12 h-12" />,
               title: "Argon2id",
               description:
                 "Strong authentication using the latest secure hash standards.",
             },
             {
-              icon: <Zap className="w-12 h-12" />,
+              icon: <LuZap className="w-12 h-12" />,
               title: "Bun Runtime",
               description:
                 "Ultra-fast performance optimized for modern applications.",

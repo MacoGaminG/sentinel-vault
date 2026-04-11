@@ -1,5 +1,6 @@
 "use client";
 
+import { Spinner } from "@/components/ui/spinner";
 import { useEffect } from "react";
 
 export default function AuthCallbackPage() {
@@ -13,5 +14,10 @@ export default function AuthCallbackPage() {
 
     window.close();
   }, []);
-  return <p>Authentication complete. You can close this window.</p>;
+
+  return (
+    <div>
+      <Spinner />
+    </div>
+  );
 }

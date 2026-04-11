@@ -5,9 +5,9 @@ export const authClient = createAuthClient();
 export const signIn = async () => {
   const { data } = await authClient.signIn.social({
     provider: "google",
-    callbackURL: "/api/auth/callback",
+    callbackURL: "/callback",
     errorCallbackURL: "/error",
-    newUserCallbackURL: "/api/auth/callback",
+    newUserCallbackURL: "/callback",
     disableRedirect: true,
     // idToken: {
     //     token: // Google ID Token,
@@ -21,8 +21,12 @@ export const signIn = async () => {
 
     if (event.data.type === "auth-success") {
       toast.success("Authentication completed successfully !");
+    } else {
+      toast.error("Authentication failed.");
     }
 
     window.removeEventListener("message", () => {});
   });
 };
+
+export const { signOut, getSession, useSession } = authClient;

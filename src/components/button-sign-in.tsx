@@ -1,14 +1,17 @@
 "use client";
 
 import { signIn } from "@/lib/authentication/auth-client";
+import { ReactNode } from "react";
 import { Button } from "./ui/button";
 
 export const ButtonSignIn = ({
-  label = "Sign in",
+  label = "Sign in with Google",
+  icon,
   size,
   variant = "default",
 }: {
   label?: string;
+  icon?: ReactNode;
   size?:
     | "default"
     | "xs"
@@ -34,7 +37,10 @@ export const ButtonSignIn = ({
       size={size}
       variant={variant}
       onClick={signIn}
+      // asChild
     >
+      {/*<Link href="/sign-in">{label}</Link>*/}
+      {icon}
       {label}
     </Button>
   );
