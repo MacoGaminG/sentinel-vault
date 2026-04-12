@@ -4,6 +4,7 @@ import { signIn, useSession } from "@/lib/authentication/auth-client";
 import { ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
+import { redirect } from "next/navigation";
 
 export const ButtonSignIn = ({
   label = "Sign in with Google",
@@ -39,6 +40,7 @@ export const ButtonSignIn = ({
     if (success) {
       await refetch();
       toast.success("Authentication completed successfully!");
+      redirect("/dashboard");
     } else {
       toast.error("Authentication failed.");
     }

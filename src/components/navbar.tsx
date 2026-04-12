@@ -11,14 +11,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 export const Navbar = () => {
   const { data } = useSession();
   const { user, session } = data || {};
-  console.log(data);
-
-  // const data = await auth.api.getSession({
-  //   headers: await headers(),
-  // });
-
-  // const session = data?.session;
-  // const user = data?.user;
 
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-zinc-100 dark:bg-zinc-950 dark:border-zinc-900">
