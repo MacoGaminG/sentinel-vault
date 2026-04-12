@@ -1,31 +1,34 @@
 import { createAuthClient } from "better-auth/react";
-import { toast } from "sonner";
+
 export const authClient = createAuthClient();
 
-export const signIn = async () => {
+export const signIn = async (): Promise<boolean> => {
   const { data } = await authClient.signIn.social({
     provider: "google",
     callbackURL: "/callback",
     errorCallbackURL: "/error",
     newUserCallbackURL: "/callback",
     disableRedirect: true,
-    // idToken: {
-    //     token: // Google ID Token,
-    //     accessToken: // Google Access Token
-    // }
   });
 
-  window.open(data?.url, "_blank", "width=500,height=600");
-  window.addEventListener("message", (event) => {
-    if (event.origin !== window.location.origin) return;
+  if (!data?.url) return false;
 
-    if (event.data.type === "auth-success") {
-      toast.success("Authentication completed successfully !");
-    } else {
-      toast.error("Authentication failed.");
-    }
+  window.open(data.url, "_blank", "width=500,height=600");
 
-    window.removeEventListener("message", () => {});
+  return new Promise<boolean>((resolve) => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+
+      if (event.data.type === "auth-success") {
+        window.removeEventListener("message", handleMessage);
+        resolve(true);
+      } else if (event.data.type === "auth-error") {
+        window.removeEventListener("message", handleMessage);
+        resolve(false);
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
   });
 };
 

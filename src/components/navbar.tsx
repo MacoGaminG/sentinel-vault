@@ -1,19 +1,24 @@
-import { auth } from "@/lib/authentication/auth";
-import { headers } from "next/headers";
+"use client";
+
+import { useSession } from "@/lib/authentication/auth-client";
 import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { LuShieldCheck } from "react-icons/lu";
 import { ButtonSignIn } from "./button-sign-in";
 import { ThemeToggle } from "./theme-toggle";
-import { LuShieldCheck } from "react-icons/lu";
-import { FcGoogle } from "react-icons/fc";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export const Navbar = async () => {
-  const data = await auth.api.getSession({
-    headers: await headers(),
-  });
+export const Navbar = () => {
+  const { data } = useSession();
+  const { user, session } = data || {};
+  console.log(data);
 
-  const session = data?.session;
-  const user = data?.user;
+  // const data = await auth.api.getSession({
+  //   headers: await headers(),
+  // });
+
+  // const session = data?.session;
+  // const user = data?.user;
 
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-zinc-100 dark:bg-zinc-950 dark:border-zinc-900">
@@ -27,7 +32,7 @@ export const Navbar = async () => {
       <div className="flex gap-2">
         {session ? (
           <Avatar>
-            <AvatarImage src={user?.image ?? undefined} />
+            <AvatarImage src={user?.image ?? ""} />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         ) : (
