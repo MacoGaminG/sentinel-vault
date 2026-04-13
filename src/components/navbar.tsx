@@ -24,7 +24,7 @@ export const Navbar = () => {
         <LuShieldCheck width={24} height={24} />
         <span>Sentinel Vault</span>
       </Link>
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-center">
         {session ? (
           <>
             <Avatar>
