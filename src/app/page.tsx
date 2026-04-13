@@ -18,7 +18,9 @@ export default function Home() {
           end-to-end **AES-256** encryption.
         </p>
         <div className="flex gap-4 justify-center">
-          <ButtonSignIn label="Start" size="lg" variant="default" />
+          <Button size="lg" variant="default" asChild>
+            <Link href="/dashboard">Start</Link>
+          </Button>
           <Button variant="outline" size="lg" asChild>
             <Link
               href="https://github.com/MacoGaminG/sentinel-vault"
