@@ -1,4 +1,3 @@
-import { ButtonSignIn } from "@/components/button-sign-in";
 import { FeaturesGrid } from "@/components/features-grid";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -13,7 +12,7 @@ export default function Home() {
           <br />
           Total simplicity.
         </h1>
-        <p className="text-zinc-400 text-lg mb-12">
+        <p className="text-[#5E5E5E] text-lg mb-12">
           A modern digital safe designed with **Next.js**, **Bun**, and
           end-to-end **AES-256** encryption.
         </p>
