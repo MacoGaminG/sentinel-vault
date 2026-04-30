@@ -23,17 +23,23 @@ export const DialogDocument = () => {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Super title</DialogTitle>
-            <DialogDescription>Super Description</DialogDescription>
+            <DialogTitle>New document</DialogTitle>
+            <DialogDescription>
+              Notice that your document is going to be encrypted in the
+              database.
+            </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
               <Label>Title</Label>
-              <Input />
+              <Input placeholder="Title for the document" />
             </Field>
             <Field>
-              <Label>Text</Label>
-              <Textarea className="max-h-80 sm:max-h-96" />
+              <Label>Content</Label>
+              <Textarea
+                placeholder="Text to encrypt"
+                className="max-h-80 sm:max-h-96"
+              />
             </Field>
           </FieldGroup>
           <DialogFooter>
