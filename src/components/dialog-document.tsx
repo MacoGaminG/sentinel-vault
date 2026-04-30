@@ -33,7 +33,7 @@ export const DialogDocument = () => {
             </Field>
             <Field>
               <Label>Text</Label>
-              <Textarea className="max-h-dvw" />
+              <Textarea className="max-h-80 sm:max-h-96" />
             </Field>
           </FieldGroup>
           <DialogFooter>
