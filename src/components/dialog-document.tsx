@@ -1,3 +1,6 @@
+"use client";
+
+import { useActionState } from "react";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -13,15 +16,35 @@ import { Field, FieldGroup } from "./ui/field";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
+import { revalidatePath } from "next/cache";
+
+type Document = {
+  title: string;
+  content: string;
+};
 
 export const DialogDocument = () => {
+  const defaultDocument: Document = {
+    title: "",
+    content: "",
+  };
+  const [document, submitAction, isPending] = useActionState(
+    async (_previousState: Document, formData: FormData) => {
+      return {
+        title: String(formData.get("title") ?? ""),
+        content: String(formData.get("content") ?? ""),
+      };
+    },
+    defaultDocument,
+  );
+
   return (
     <Dialog>
-      <form>
-        <DialogTrigger asChild>
-          <Button variant="outline">Add document</Button>
-        </DialogTrigger>
-        <DialogContent>
+      <DialogTrigger asChild>
+        <Button variant="outline">Add document</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <form action={submitAction} className="grid gap-4">
           <DialogHeader>
             <DialogTitle>New document</DialogTitle>
             <DialogDescription>
@@ -31,25 +54,37 @@ export const DialogDocument = () => {
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label>Title</Label>
-              <Input placeholder="Title for the document" />
+              <Label htmlFor="document-title">Title</Label>
+              <Input
+                id="document-title"
+                name="title"
+                placeholder="Title for the document"
+                defaultValue={document.title}
+              />
             </Field>
             <Field>
-              <Label>Content</Label>
+              <Label htmlFor="document-content">Content</Label>
               <Textarea
+                id="document-content"
+                name="content"
                 placeholder="Text to encrypt"
                 className="max-h-80 sm:max-h-96"
+                defaultValue={document.content}
               />
             </Field>
           </FieldGroup>
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
             </DialogClose>
-            <Button type="submit">Submit</Button>
+            <Button type="submit" disabled={isPending}>
+              {isPending ? "Submitting..." : "Submit"}
+            </Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 };
